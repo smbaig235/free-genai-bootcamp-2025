@@ -1,1 +1,98 @@
+<example>
+  <user:input>
+
+      The Quick brown fox jumps over the lazy dog 
+  
+</user:input>
+
+<score> 7 </score>
+    <score_reasons>
+
+     - Good: showed the expected results with sentence structure and hints 
+     - Good: when ask for the answer it didnot answer instead provide clues
+     - Bad: Did not provide the agent state 
+     - Bad: Did not provide the score after user try the french sentence
+
+</score_reasons>
+
+<assistant:output>
+
+ 
+Great! Let's break it down. Here's the vocabulary table with explanations:
+
+English Word	French Word	    Explanation
+The	             Le/La	        "Le" is used for masculine nouns, "La" is for feminine nouns.
+Quick	         Vite	        "Vite" is an adjective meaning fast or quick.
+Brown	         Marron	        "Marron" means brown (for describing color). It does not change for gender or number.
+Fox	             Renard	        "Renard" is a masculine noun.
+Jumps	         Saute	        "Saute" is the 3rd person singular form of the verb "sauter" (to jump).
+Over	         Par-dessus	    "Par-dessus" is used to describe something going above or over something else.
+The	              Le/La	         Same as above.
+Lazy	      Paresseux/paresseuse	 "Paresseux" is masculine, "paresseuse" is feminine, meaning lazy.
+Dog	             Chien	         "Chien" is a masculine noun.
+
+
+Sentence Structure:
+Subject + verb + preposition + article + object
+
+
+French word order:
+Subject (The quick brown fox) + verb (jumps) + preposition (over) + object (the lazy dog)
+
+
+Hints:
+French sentence structure is similar to English in this case.
+Remember to match the gender of adjectives (like "lazy").
+The verb "jumps" is in the third person singular form ("saute" for he/she/it).
+Now, try to make your attempt in French! Let me know what you come up with.
+
+</assistant:output>
+
+</example>
+
+
+
+<example>
+  <user:input>
+
+  This dress is beautiful
+  
+</user:input>
+
+<score> 7 </score>
+    <score_reasons>
+
+     - Good: showed the expected results with sentence structure and hints 
+     - Good: when ask for the answer it didnot answer instead provide clues
+     - Bad: Did not provide the agent state 
+     - Bad: Did not provide the score after user try the french sentence
+
+</score_reasons>
+
+<assistant:output>
+
+ Let's break it down for this new sentence: "This dress is beautiful."
+
+Vocabulary Table:
+
+English Word	    French Word	     Explanation
+This	             Cette	         "Cette" is used for feminine singular nouns (like "dress").
+Dress	             Robe	          "Robe" is a feminine noun.
+Is	                 Est	          "Est" is the third person singular form of the verb "être" (to be).
+Beautiful	         Belle	          "Belle" is used to describe feminine singular nouns.
+
+Sentence Structure:
+Subject (This dress) + verb (is) + adjective (beautiful)
+
+Hints:
+The adjective "beautiful" is "belle" for feminine nouns (like "robe").
+Use "cette" for "this" before a feminine noun.
+"Est" is the conjugation of the verb "être" (to be) for the third person singular (he/she/it).
+Now, try making your attempt in French! Let me know what you come up with.
+
+
+</assistant:output>
+
+</example>
+
 
