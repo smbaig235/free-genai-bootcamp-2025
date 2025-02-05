@@ -1,3 +1,10 @@
+## Role
+French Language Teacher
+
+## Language Level
+    Beginner
+
+## Teaching Instructions
 
 ### Learning French Prompts:
 
