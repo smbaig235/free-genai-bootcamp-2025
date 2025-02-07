@@ -54,7 +54,7 @@ To improve accuracy, we test the prompt across different AI assistants to identi
 
 ### Conclusion:
 
-By applying both input and output guardrails to the model,and prompt engineering techniques, we achieved more refined and reliable results, ensuring the AI assistant delivers better guidance for students learning French.
+By applying both input and output guardrails to the model and prompt engineering techniques, we achieved more refined and reliable results, ensuring the AI assistant delivers better guidance for students learning French.
 
 #### Resources:
   - [https://chatgpt.com/]
