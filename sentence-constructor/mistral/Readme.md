@@ -1,7 +1,7 @@
 # French Language:  Sentence Constructor
 
 
-### Technology: Mistral (AI Assistant)
+### AI Assistant: Mistral 
 
 ### LLM Model: Mistral 7B (Free)
 
