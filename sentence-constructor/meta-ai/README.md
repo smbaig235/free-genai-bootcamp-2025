@@ -2,8 +2,10 @@
 
 
 ### Technology: Meta AI (AI Assistant)
-### Model: llama 2.0 (free)
 
+### LLM Model: llama 3.1 (free)
+
+Llama 3.1 is Meta's latest flagship language model,boasting an impressive 405 billion parameters. 
 
 ## Objective:
 
@@ -49,7 +51,7 @@ To improve accuracy, we test the prompt across different AI assistants to identi
 
 ### Conclusion:
 
-By applying both input and output guardrails to the model, we achieved more refined and reliable results, ensuring the AI assistant delivers better guidance for students learning French.
+By applying both input and output guardrails to the model and prompt engineering techniques, we achieved more refined and reliable results, ensuring the AI assistant delivers better guidance for students learning French.
 
  #### Resources:
   - [https://www.meta.ai/]
