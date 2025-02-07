@@ -2,7 +2,11 @@
 
 
 ### Technology: Mistral (AI Assistant)
-### Model: Mistral 7B (Free)
+
+### LLM Model: Mistral 7B (Free)
+
+The Mistral "Le Chat" model, also known as "Mistral 7B", has 7.3 billion parameters. 
+This is the primary name for the Mistral model used in "Le Chat", and it specifically refers to its size of 7.3 billion parameters.
 
 
 ## Objective:
@@ -49,7 +53,7 @@ To improve accuracy, we test the prompt across different AI assistants to identi
 
 ### Conclusion:
 
-By applying both input and output guardrails to the model, we achieved more refined and reliable results, ensuring the AI assistant delivers better guidance for students learning French.
+By applying both input and output guardrails to the model and prompt engineering techniques, we achieved more refined and reliable results, ensuring the AI assistant delivers better guidance for students learning French.
 
 #### Resources:
   - [https://mistral.ai/]
