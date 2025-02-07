@@ -1,7 +1,7 @@
 # French Language:  Sentence Constructor
 
 
-### Technology: Meta AI (AI Assistant)
+### AI Assistant: Meta AI 
 
 ### LLM Model: llama 3.1 (free)
 
