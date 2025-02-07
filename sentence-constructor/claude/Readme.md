@@ -2,8 +2,10 @@
 
 
 ### Technology: Claude (AI Assistant)
-### Model: Claude Sonnet Model (Free)
 
+### LLM Model: Claude 3.5 Sonnet Model (Free)
+
+ Claude 3.5 Sonnet Model is designed to be particularly capable at complex analysis and reasoning tasks. It has estimated 180 Billion parameters
 
 ## Objective:
 
@@ -49,7 +51,7 @@ To improve accuracy, we test the prompt across different AI assistants to identi
 
 ### Conclusion:
 
-By applying both input and output guardrails to the model, we achieved more refined and reliable results, ensuring the AI assistant delivers better guidance for students learning French.
+By applying both input and output guardrails to the model and prompt engineering techniques, we achieved more refined and reliable results, ensuring the AI assistant delivers better guidance for students learning French.
 
 #### Resources:
   - [https://claude.ai/]
