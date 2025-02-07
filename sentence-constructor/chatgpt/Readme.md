@@ -2,7 +2,12 @@
 
 
 ### Technology: ChatGPT (AI Assistant)
-### Model: ChatGPT 4.0 (free)
+
+### LLM Model: ChatGPT-4-turbo (free)
+OpenAI hasn't publicly disclosed the exact number of parameters for GPT-4 or GPT-4-turbo.
+However, it's significantly larger and more efficient than previous models like GPT-3, which had 175 billion parameters. 
+GPT-4-turbo is optimized for speed and cost while maintaining high performance.
+GPT-4 Turbo shows lower accuracy. 
 
 
 ## Objective:
@@ -49,7 +54,7 @@ To improve accuracy, we test the prompt across different AI assistants to identi
 
 ### Conclusion:
 
-By applying both input and output guardrails to the model, we achieved more refined and reliable results, ensuring the AI assistant delivers better guidance for students learning French.
+By applying both input and output guardrails to the model,and prompt engineering techniques, we achieved more refined and reliable results, ensuring the AI assistant delivers better guidance for students learning French.
 
 #### Resources:
   - [https://chatgpt.com/]
