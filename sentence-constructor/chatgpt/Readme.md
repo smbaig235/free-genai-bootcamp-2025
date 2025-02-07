@@ -1,7 +1,7 @@
 # French Language:  Sentence Constructor
 
 
-### Technology: ChatGPT (AI Assistant)
+### AI Assistant: ChatGPT 
 
 ### LLM Model: ChatGPT-4-turbo (free)
 OpenAI hasn't publicly disclosed the exact number of parameters for GPT-4 or GPT-4-turbo.
