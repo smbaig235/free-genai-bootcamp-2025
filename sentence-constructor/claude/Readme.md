@@ -1,7 +1,7 @@
 # French Language:  Sentence Constructor
 
 
-### Technology: Claude (AI Assistant)
+### AI Assistant: Claude 
 
 ### LLM Model: Claude 3.5 Sonnet Model (Free)
 
