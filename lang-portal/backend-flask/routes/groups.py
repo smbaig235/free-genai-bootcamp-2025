@@ -136,15 +136,13 @@ def load(app):
       total_pages = (total_words + words_per_page - 1) // words_per_page
 
       # Format the response
-      words_data = []
-      for word in words:
-        words_data.append({
-          "id": word["id"],
-          "french": word["french"],
-          "english": word["english"],
-          "correct_count": word["correct_count"],
-          "wrong_count": word["wrong_count"]
-        })
+      words_data = [{
+        "id": word["id"],
+        "french": word["french"],
+        "english": word["english"],
+        "correct_count": word["correct_count"],
+        "wrong_count": word["wrong_count"]
+      } for word in words]
 
       return jsonify({
         'words': words_data,
@@ -154,7 +152,50 @@ def load(app):
     except Exception as e:
       return jsonify({"error": str(e)}), 500
 
-  # todo GET /groups/:id/words/raw
+  @app.route('/groups/<int:id>/words/raw', methods=['GET'])
+  @cross_origin()
+  def get_group_words_raw(id):
+    try:
+      cursor = app.db.cursor()
+      
+      # Check if group exists
+      cursor.execute('SELECT name FROM groups WHERE id = ?', (id,))
+      group = cursor.fetchone()
+      if not group:
+        return jsonify({"error": "Group not found"}), 404
+
+      # Fetch all words for the group
+      cursor.execute('''
+        SELECT 
+          w.id,
+          w.french,
+          w.english,
+          COALESCE(wr.correct_count, 0) as correct_count,
+          COALESCE(wr.wrong_count, 0) as wrong_count
+        FROM words w
+        JOIN word_groups wg ON w.id = wg.word_id
+        LEFT JOIN word_reviews wr ON w.id = wr.word_id
+        WHERE wg.group_id = ?
+        ORDER BY w.french ASC
+      ''', (id,))
+      
+      words = cursor.fetchall()
+      
+      # Format response
+      words_data = [{
+        "id": word["id"],
+        "french": word["french"],
+        "english": word["english"],
+        "correct_count": word["correct_count"],
+        "wrong_count": word["wrong_count"]
+      } for word in words]
+
+      return jsonify({
+        'words': words_data
+      })
+      
+    except Exception as e:
+      return jsonify({"error": str(e)}), 500
 
   @app.route('/groups/<int:id>/study_sessions', methods=['GET'])
   @cross_origin()

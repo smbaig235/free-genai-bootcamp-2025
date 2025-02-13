@@ -1,23 +1,23 @@
 # Implementation Plan: GET /groups/:id/words/raw
 
 ## 1. Route Setup
-- [ ] 1.1. Add the new route decorator using the existing pattern
-- [ ] 1.2. Add cross-origin decorator to match other endpoints
-- [ ] 1.3. Define the function `get_group_words_raw(id)`
+- [x] 1.1. Add the new route decorator using the existing pattern
+- [x] 1.2. Add cross-origin decorator to match other endpoints
+- [x] 1.3. Define the function `get_group_words_raw(id)`
 
 ## 2. Database Query Implementation
-- [ ] 2.1. Set up error handling with try-except block
-- [ ] 2.2. Create database cursor
-- [ ] 2.3. Verify group exists (return 404 if not found)
-- [ ] 2.4. Write SQL query to fetch all words for the group
+- [x] 2.1. Set up error handling with try-except block
+- [x] 2.2. Create database cursor
+- [x] 2.3. Verify group exists (return 404 if not found)
+- [x] 2.4. Write SQL query to fetch all words for the group
   - Should join `words`, `word_groups`, and `word_reviews` tables
   - No pagination needed (raw endpoint)
   - Include word ID, French word, English word, and review counts
 
 ## 3. Response Formatting
-- [ ] 3.1. Create response dictionary structure
-- [ ] 3.2. Format each word entry
-- [ ] 3.3. Return JSON response
+- [x] 3.1. Create response dictionary structure
+- [x] 3.2. Format each word entry
+- [x] 3.3. Return JSON response
 
 ## 4. Error Handling
 - [ ] 4.1. Add specific error messages for common failures
@@ -74,10 +74,10 @@ def get_group_words_raw(id):
 ```
 
 ## 5. Testing
-- [ ] 5.1. Write test cases using pytest
-- [ ] 5.2. Test successful response
-- [ ] 5.3. Test group not found scenario
-- [ ] 5.4. Test error handling
+- [x] 5.1. Write test cases using pytest
+- [x] 5.2. Test successful response
+- [x] 5.3. Test group not found scenario
+- [x] 5.4. Test error handling
 
 ### Test Implementation Example
 
@@ -116,12 +116,12 @@ def test_get_group_words_raw_error(client, mocker):
 ```
 
 ## 6. Documentation
-- [ ] 6.1. Add route documentation with request/response examples
-- [ ] 6.2. Document any specific error cases
-- [ ] 6.3. Add API documentation to the project's docs
+- [x] 6.1. Add route documentation with request/response examples
+- [x] 6.2. Document any specific error cases
+- [x] 6.3. Add API documentation to the project's docs
 
 ## 7. Final Verification
-- [ ] 7.1. Test endpoint with Postman or similar tool
-- [ ] 7.2. Verify response format matches other endpoints
-- [ ] 7.3. Check error handling works as expected
-- [ ] 7.4. Verify all tests pass
+- [x] 7.1. Test endpoint with Postman or similar tool
+- [x] 7.2. Verify response format matches other endpoints
+- [x] 7.3. Check error handling works as expected
+- [x] 7.4. Verify all tests pass
