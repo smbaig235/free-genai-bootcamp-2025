@@ -2,6 +2,7 @@ from flask import request, jsonify, g, current_app
 from flask_cors import cross_origin
 from datetime import datetime
 import math
+import sqlite3
 
 def load(app):
   @app.route('/api/study-sessions', methods=['POST'])
@@ -231,7 +232,106 @@ def load(app):
     except Exception as e:
       return jsonify({"error": str(e)}), 500
 
-  # todo POST /study_sessions/:id/review
+  @app.route('/api/study-sessions/<id>/review', methods=['POST'])
+  @cross_origin()
+  def create_review_item(id):
+    cursor = None
+    try:
+      # Parse and validate request body
+      data = request.get_json()
+      if not all(key in data for key in ['word_id', 'correct']):
+        return jsonify({"error": "Missing required fields"}), 400
+        
+      # Validate and convert data types
+      try:
+        word_id = int(data['word_id'])
+        correct = bool(data['correct'])
+      except ValueError:
+        return jsonify({"error": "Invalid data format"}), 400
+
+      cursor = app.db.cursor()
+      
+      # Verify study session exists and get group_id
+      cursor.execute('''
+        SELECT ss.id, ss.group_id 
+        FROM study_sessions ss 
+        WHERE ss.id = ?
+      ''', (id,))
+      session = cursor.fetchone()
+      if not session:
+        return jsonify({"error": "Study session not found"}), 404
+        
+      # Verify word exists and belongs to group
+      cursor.execute('''
+        SELECT w.id 
+        FROM words w
+        JOIN group_words gw ON gw.word_id = w.id
+        WHERE w.id = ? AND gw.group_id = ?
+      ''', (word_id, session['group_id']))
+      if not cursor.fetchone():
+        return jsonify({"error": "Word not found or not in group"}), 404
+
+      # Create review item
+      cursor.execute('''
+        INSERT INTO word_review_items (
+          study_session_id,
+          word_id,
+          correct,
+          created_at
+        ) VALUES (?, ?, ?, datetime('now'))
+      ''', (id, word_id, correct))
+      
+      review_id = cursor.lastrowid
+      
+      # Commit the transaction
+      app.db.commit()
+
+      # Fetch created review details
+      cursor.execute('''
+        SELECT 
+          wri.id,
+          wri.word_id,
+          w.french,
+          w.english,
+          wri.correct,
+          wri.created_at
+        FROM word_review_items wri
+        JOIN words w ON w.id = wri.word_id
+        WHERE wri.id = ?
+      ''', (review_id,))
+      
+      review = cursor.fetchone()
+      
+      return jsonify({
+        'id': review['id'],
+        'word_id': review['word_id'],
+        'french': review['french'],
+        'english': review['english'],
+        'correct': review['correct'],
+        'created_at': review['created_at']
+      }), 201
+      
+    except ValueError as e:
+      current_app.logger.error(f"Validation error in create_review_item: {str(e)}")
+      return jsonify({"error": "Invalid input format"}), 400
+      
+    except sqlite3.IntegrityError as e:
+      current_app.logger.error(f"Database integrity error in create_review_item: {str(e)}")
+      if cursor:
+        cursor.execute("ROLLBACK")
+      return jsonify({"error": "Database constraint violation"}), 409
+      
+    except sqlite3.Error as e:
+      current_app.logger.error(f"Database error in create_review_item: {str(e)}")
+      if cursor:
+        cursor.execute("ROLLBACK")
+      return jsonify({"error": "Database error occurred"}), 500
+      
+    except Exception as e:
+      current_app.logger.error(f"Unexpected error in create_review_item: {str(e)}")
+      if cursor:
+        cursor.execute("ROLLBACK")
+      return jsonify({"error": "An unexpected error occurred"}), 500
 
   @app.route('/api/study-sessions/reset', methods=['POST'])
   @cross_origin()
