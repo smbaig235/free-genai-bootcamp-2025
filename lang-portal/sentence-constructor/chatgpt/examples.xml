@@ -1,0 +1,86 @@
+<example>
+  <user:input>
+
+      I eat pizza
+  
+</user:input>
+
+<score>8</score>
+    <score_reasons>
+    
+     - Good: showed the expected results with sentence structure and hints 
+     - Good: when ask for the answer it didnot answer, instead provide clues
+     - Bad: Did not provide the agent state 
+     - Bad: Did not provide the score after user try the french sentence
+     
+
+</score_reasons>
+
+<assistant:output>
+
+ 
+English	  French	   Explanation
+
+ |I	       |je	    |"I" is the first person singular subject pronoun in French.
+ |eat	  |manger	    |"Eat" is a verb in French. You'll need to conjugate it in the present tense.
+ |pizza	  |pizza	    |"Pizza" is the same in French.
+
+
+Sentence Structure in French:
+
+Subject + verb + object
+
+Hints:
+In French, the verb "manger" (to eat) needs to be conjugated in the present tense.
+The subject "I" is "je" in French.
+The object "pizza" remains the same in French.
+Now, try to construct the sentence in French using these clues and the vocabulary provided. Once you have your attempt, I can help you interpret it back into English
+
+</assistant:output>
+
+</example>
+
+<example>
+     <user:input>
+
+     Where is the New york city?
+
+</user:input>
+
+<score>8</score>
+    <score_reasons>
+    
+     - Good: showed the expected results with sentence structure and hints 
+     - Good: when ask for the answer it didnot answer instead provide clues
+     - Bad: Did not provide the agent state 
+     - Bad: Did not provide the score after user try the french sentence
+     
+
+</score_reasons>
+
+<assistant:output>
+
+ Vocabulary Table
+English	   French	   Explanation
+
+|where	  | où	    |"Where" is translated as "où" in French.
+|is	       |est	    |"Is" is the third person singular form of the verb "to be" in French.
+|the	       |le/la/les  |"The" changes form based on the gender and number of the noun it precedes.
+|New York	  |New York   | The name of the city remains the same in French.
+|city	  | ville	    |"City" is a feminine noun in French.
+
+Sentence Structure in French:
+Question word + verb + subject + object
+
+Hints:
+Questions in French often start with a question word like "Où".
+The verb "to be" is "être" in French, and it conjugates differently depending on the subject.
+The definite article "the" changes form based on the gender and number of the noun it precedes.
+Now, try to construct the sentence in French using these clues and the vocabulary provided. Once you have your attempt, I can help you interpret it back into English.
+
+
+</assistant:output>
+      </example>
+
+
+    

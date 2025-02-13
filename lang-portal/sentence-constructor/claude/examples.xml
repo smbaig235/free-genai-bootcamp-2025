@@ -1,0 +1,111 @@
+<example>
+     <user:input>
+
+     The cat is sleeping on the couch
+
+</user:input>
+
+<score>8</score>
+    <score_reasons>
+
+     - Good: Show the expected results with sentence structure and hints 
+     - Good: when ask for the answer it didnot answer instead provide clues
+     - Bad: Did not provide the agent state 
+
+</score_reasons>
+
+<assistant:output>
+
+Let's break this down into parts!
+
+Vocabulary Table:
+
+English        French        Explanation
+|the           |le
+|cat           |chat        | Masculine noun with articleis 
+|sleeping      |dort        |present tense of 'dormir' (to sleep)
+|on            |sur         | Preposition
+|couch         |le canapé   |Masculine noun with article
+
+
+Sentence Structure:
+In French, we follow: Subject + Verb + Preposition + Object
+
+Note: Unlike English, we don't use the present continuous (-ing form)
+French uses the simple present tense instead
+
+Hints:
+
+Start with your subject (the cat)
+In French, we don't say "is sleeping" but just use "sleeps"
+The preposition "sur" (on) comes before the object
+Both "chat" and "canapé" are masculine nouns, so they use "le"
+
+Grammar Note:
+
+French doesn't have a continuous tense (-ing)
+"is sleeping" becomes just "sleeps" (dort)
+Both nouns in this sentence are masculine
+
+Would you like to try forming this sentence in French?
+
+</assistant:output>
+      </example>
+
+
+
+<example>
+     <user:input>
+
+      I eat pizza
+
+</user:input>
+
+<score> 7 </score>
+    <score_reasons>
+    
+     - Good: Showed the expected results with sentence structure and hints 
+     - Good: when ask for the answer it didnot answer instead provide clues
+     - Bad: Did not provide the agent state 
+     
+
+</score_reasons>
+
+<assistant:output>
+
+  Let's break this simple sentence down!
+
+Vocabulary Table:
+
+English   French       Explanation
+|I        |je          |Personal pronoun 
+|eat      |manger      |Verb 'to eat' (needs conjugation)
+|pizza    |pizza       |Feminine noun
+
+
+Sentence Structure:
+In French, we follow: Subject + Verb + Object
+
+"Je" is always followed by a conjugated verb
+"Manger" needs to be conjugated in present tense for "je"
+
+Hints:
+
+Start with "je"
+For "manger" in present tense with "je":
+
+Most verbs that end in -er follow the same pattern
+Remove -er and add the correct ending for "je"
+Think about other -er verbs you might know (parler, danser)
+
+
+"Pizza" stays the same in French!
+
+Would you like to try forming this sentence in French?
+
+
+</assistant:output>
+      </example>
+
+    
+      

@@ -1,0 +1,89 @@
+<example>
+  <user:input>
+
+      The dog is hungry feed him
+  
+</user:input>
+
+<score> 4 </score>
+    <score_reasons>
+
+     - Bad:when user attempt to ask for the answer you provide the correct answer but you are not suppose to answer only hints are allowed
+     - Bad: Did not provide the agent state 
+
+</score_reasons>
+
+<assistant:output>
+
+ Vocabulary Table
+English Word	 French Word	  Explanation
+|Dog	        |    Le chien	  |Masculine noun
+|Is	          |    Est	      |Verb "to be" in present tense
+|Hungry	      |    Affamé	    |Adjective, masculine form
+|Feed	        | Nourrir	      |Verb, imperative form will be used
+|Him	        | Le	          |Direct object pronoun, masculine form
+|Food	        |La nourriture  |Feminine noun
+
+Sentence Structure
+Subject + Verb + Object
+
+Hints
+Use the imperative form of the verb "nourrir" to give a command.
+The direct object pronoun "le" replaces "him" in the sentence.
+Pay attention to the word order in French.
+
+ User input: provide me the answer
+
+Correct Answer
+"Le chien a faim, nourris-le avec de la nourriture."
+Or, in a more concise and idiomatic way:
+"Le chien a faim, nourris-le."
+Translation: "The dog is hungry, feed him."
+Note: I used "a faim" (has hunger) instead of "est affamé" to make the sentence more natural and conversational.
+Explanation
+"Le chien a faim" is a more common way to say "the dog is hungry".
+"Nourris-le" is the imperative form of the verb "nourrir", with the direct object pronoun "le" (him).
+"Avec de la nourriture" is optional, but adds more detail to the sentence.
+I hope this helps! Let me know if you have any more questions or if you'd like to practice with another sentence.
+
+</assistant:output>
+
+</example>
+
+
+<example>
+  <user:input>
+
+      I like to eat icecream
+  
+</user:input>
+
+<score> 4 </score>
+    <score_reasons>
+    
+     - Bad: Did not provide the agent state 
+
+</score_reasons>
+
+<assistant:output>
+
+Vocabulary Table
+English Word	French Word	   Explanation
+|I	           |Je	         |Subject pronoun
+|Like	         |Aime	       |Verb, first person singular
+|To Eat	       |Manger	     |Verb, infinitive form
+|Ice Cream	   |La glace	   |Feminine noun
+
+
+Sentence Structure
+Subject + Verb + Infinitive Verb + Object
+
+
+Hints
+Use the verb "aimer" (to like) in the first person singular form.
+The verb "manger" (to eat) is in the infinitive form.
+Pay attention to the word order in French.
+Now it's your turn! Try translating the sentence into French. I'll wait for your attempt.
+
+</assistant:output>
+</example>
