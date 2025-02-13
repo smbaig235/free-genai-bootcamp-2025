@@ -7,10 +7,10 @@ import pytest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from app import create_app
+from lib.db import init_db, get_db
 
 @pytest.fixture
 def app():
-    # Create a temporary file to isolate the database for tests
     db_fd, db_path = tempfile.mkstemp()
     
     app = create_app({
@@ -18,27 +18,20 @@ def app():
         'DATABASE': db_path,
     })
 
-    # Other setup can go here
     with app.app_context():
-        # Initialize the test database
-        pass
-
-    yield app
-
-    # Cleanup - close database connection before removing file
-    if hasattr(app, 'db'):
-        app.db.close()
+        init_db()
+        db = get_db()
+        app.db = db
+        yield app
+        
+        # Cleanup
+        db.close()
     
-    # Close the file descriptor
     os.close(db_fd)
-    
-    # Try to remove the file, with a small delay if needed
     try:
         os.unlink(db_path)
     except PermissionError:
-        import time
-        time.sleep(1)  # Give Windows time to release the file
-        os.unlink(db_path)
+        pass  # Ignore permission errors on cleanup
 
 @pytest.fixture
 def client(app):

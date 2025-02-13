@@ -1,6 +1,6 @@
 import sqlite3
 import json
-from flask import g
+from flask import g, current_app
 
 class Db:
   def __init__(self, database='words.db'):
@@ -9,7 +9,10 @@ class Db:
 
   def get(self):
     if 'db' not in g:
-      g.db = sqlite3.connect(self.database)
+      g.db = sqlite3.connect(
+        self.database,
+        detect_types=sqlite3.PARSE_DECLTYPES
+      )
       g.db.row_factory = sqlite3.Row  # Return rows as dictionaries
     return g.db
 
@@ -84,8 +87,8 @@ class Db:
       for word in words:
         # Insert the word into the words table
         cursor.execute('''
-          INSERT INTO words (kanji, romaji, english, parts) VALUES (?, ?, ?, ?)
-        ''', (word['kanji'], word['romaji'], word['english'], json.dumps(word['parts'])))
+          INSERT INTO words (french, english, parts) VALUES (?, ?, ?, ?)
+        ''', (word['french'], word['english'], json.dumps(word['parts'])))
         
         # Get the last inserted word's ID
         word_id = cursor.lastrowid
@@ -129,6 +132,64 @@ class Db:
         cursor=cursor,
         data_json_path='seed/study_activities.json'
       )
+
+def get_db():
+    if 'db' not in g:
+        g.db = sqlite3.connect(
+            current_app.config['DATABASE'],
+            detect_types=sqlite3.PARSE_DECLTYPES
+        )
+        g.db.row_factory = sqlite3.Row
+
+    return g.db
+
+def close_db(e=None):
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
+
+def init_db():
+    """Initialize the database with schema"""
+    db = get_db()
+    
+    # Create tables
+    db.executescript('''
+        -- Create groups table
+        CREATE TABLE IF NOT EXISTS groups (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            words_count INTEGER DEFAULT 0
+        );
+
+        -- Create words table
+        CREATE TABLE IF NOT EXISTS words (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            french TEXT NOT NULL,
+            english TEXT NOT NULL,
+            french TEXT,
+            parts TEXT
+        );
+
+        -- Create word_groups table
+        CREATE TABLE IF NOT EXISTS word_groups (
+            group_id INTEGER,
+            word_id INTEGER,
+            FOREIGN KEY (group_id) REFERENCES groups (id),
+            FOREIGN KEY (word_id) REFERENCES words (id),
+            PRIMARY KEY (group_id, word_id)
+        );
+
+        -- Create word_reviews table
+        CREATE TABLE IF NOT EXISTS word_reviews (
+            word_id INTEGER,
+            correct_count INTEGER DEFAULT 0,
+            wrong_count INTEGER DEFAULT 0,
+            FOREIGN KEY (word_id) REFERENCES words (id),
+            PRIMARY KEY (word_id)
+        );
+    ''')
+    
+    db.commit()
 
 # Create an instance of the Db class
 db = Db()
