@@ -89,7 +89,7 @@ cursor.execute('''
 ''', (session_id,))
 ```
 
-####Format and return response
+#### Format and return response
 
 ```python
 session = cursor.fetchone()
@@ -105,13 +105,13 @@ return jsonify({
 }), 201
 ```
 
-####Error Handling
+#### Error Handling
 
      * Add try-catch block
 
      * Add database commit
 
-####Testing Code
+#### Testing Code
 
 #### Unit Tests
 
@@ -205,7 +205,7 @@ Now,we are ready to run the curl commands
      -d '{"group_id": 1, "study_activity_id": 1}'
 '''
 
-  ![New study Session.](lang-portal/backend-flask/images/New-Study-Sessions.png)
+  ![New study Session.](images/New-Study-Sessions.png)
 
 #### Test missing fields
 '''
@@ -213,7 +213,7 @@ Now,we are ready to run the curl commands
       -H "Content-Type: application/json" \
       -d '{"group_id": 1}'
 '''
-   ![Test Missing Field.](backend-flask/images/Test-Missingfields.png)
+   ![Test Missing Field.](images/Test-Missingfields.png)
 
 #### Test invalid group
 
@@ -223,7 +223,7 @@ Now,we are ready to run the curl commands
      -d '{"group_id": 999, "study_activity_id": 1}'
 '''
 
-  ![Test Invalid group.](backend-flask/images/Test-Invalid-group.png)
+  ![Test Invalid group.](images/Test-Invalid-group.png)
 
 
 ## 2. Submit reviews for a study sessions (POST /study_sessions/:id/review Route)
@@ -558,7 +558,7 @@ def test_get_group_words_raw_error(client, mocker):
     assert 'error' in data
 ```
 
- ![Test groups.](backend-flask/images/group-test.png)
+ ![Test groups.](images/group-test.png)
 
 #### Documentation
 
