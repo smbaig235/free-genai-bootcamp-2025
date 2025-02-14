@@ -205,7 +205,7 @@ Now,we are ready to run the curl commands
      -d '{"group_id": 1, "study_activity_id": 1}'
 '''
 
-  ![New study Session.](images/New-Study-Sessions.png=100x20)
+  ![New study Session.](images/New-Study-Sessions.png)
 
 #### Test missing fields
 '''
@@ -213,7 +213,7 @@ Now,we are ready to run the curl commands
       -H "Content-Type: application/json" \
       -d '{"group_id": 1}'
 '''
-   ![Test Missing Field.](images/Test-Missingfields.png=100x20)
+   ![Test Missing Field.](images/Test-Missingfields.png)
 
 #### Test invalid group
 
@@ -223,7 +223,7 @@ Now,we are ready to run the curl commands
      -d '{"group_id": 999, "study_activity_id": 1}'
 '''
 
-  ![Test Invalid group.](images/Test-Invalid-group.png=100x20)
+  ![Test Invalid group.](images/Test-Invalid-group.png)
 
 
 ## 2. Submit reviews for a study sessions (POST /study_sessions/:id/review Route)
@@ -558,7 +558,7 @@ def test_get_group_words_raw_error(client, mocker):
     assert 'error' in data
 ```
 
- ![Test groups.](images/group-test.png=100x20)
+ ![Test groups](images/group-test.png)
 
 #### Documentation
 
