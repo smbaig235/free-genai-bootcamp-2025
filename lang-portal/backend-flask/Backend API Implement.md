@@ -196,7 +196,7 @@ Now,we are ready to run the curl commands
       -H "Content-Type: application/json" \
       -d '{"group_id": 1}'
 '''
-   ![Test Missing Field.](gen-ai-bootcamp-2025/lang-portal/Test-Missingfields.png)
+   ![Test Missing Field.](gen-ai-bootcamp-2025/lang-portal/backend-flask/images/Test-Missingfields.png)
 
 # Test invalid group
 
@@ -206,7 +206,7 @@ Now,we are ready to run the curl commands
      -d '{"group_id": 999, "study_activity_id": 1}'
 '''
 
-  ![Test Invalid group.](gen-ai-bootcamp-2025/lang-portal/Test-Invalid-group.png)
+  ![Test Invalid group.](gen-ai-bootcamp-2025/lang-portal/backend-flask/images/Test-Invalid-group.png)
 
 
 ## 2. Submit reviews for a study sessions (POST /study_sessions/:id/review Route)
@@ -540,6 +540,8 @@ def test_get_group_words_raw_error(client, mocker):
     data = response.get_json()
     assert 'error' in data
 ```
+
+ ![Test groups.](gen-ai-bootcamp-2025/lang-portal/backend-flask/images/group-test.png)
 
 ## 6. Documentation
 
