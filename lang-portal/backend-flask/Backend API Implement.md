@@ -205,7 +205,7 @@ Now,we are ready to run the curl commands
      -d '{"group_id": 1, "study_activity_id": 1}'
 '''
 
-  ![New study Session.](images/New-Study-Sessions.png)
+  ![New study Session.](images/New-Study-Sessions.png =50x50)
 
 #### Test missing fields
 '''
@@ -213,7 +213,7 @@ Now,we are ready to run the curl commands
       -H "Content-Type: application/json" \
       -d '{"group_id": 1}'
 '''
-   ![Test Missing Field.](images/Test-Missingfields.png)
+   ![Test Missing Field.](images/Test-Missingfields.png =50x50)
 
 #### Test invalid group
 
@@ -223,7 +223,7 @@ Now,we are ready to run the curl commands
      -d '{"group_id": 999, "study_activity_id": 1}'
 '''
 
-  ![Test Invalid group.](images/Test-Invalid-group.png)
+  ![Test Invalid group.](images/Test-Invalid-group.png =50x50)
 
 
 ## 2. Submit reviews for a study sessions (POST /study_sessions/:id/review Route)
@@ -558,12 +558,13 @@ def test_get_group_words_raw_error(client, mocker):
     assert 'error' in data
 ```
 
- ![Test groups.](images/group-test.png)
+ ![Test groups.](images/group-test.png =50x50)
 
 #### Documentation
 
 -  Add route documentation with request/response examples
 -  Document any specific error cases
 -  Add API documentation to the project's docs
+path: backend-flask/docs/api-documentation.md
 
 
