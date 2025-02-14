@@ -22,12 +22,11 @@
 
 #### Step 2:
 
-1. Next,We created plans for the missing API endpoints to implement the step by step guide which helps during implementation and testing.
+1. Next,we created plans for the missing API endpoints to implement the step by step guide which helps during implementation and testing.
 
 #### Step 3:
  
-##### API Endpoint Implementations:  
-
+### API Endpoint Implementations:  
 
 ## 1. Study Sessions Endpoint: (POST /study_sessions Route)
 
@@ -40,9 +39,9 @@ These are the implementation steps for the POST /study_sessions route:
 * Error Handling
 * Testing 
 
-- 1. Route Setup
+- Route Setup
 
-   1.1. In this step we added the route decorator and function definition
+ In this step we added the route decorator and function definition
 
 ```python
 @app.route('/api/study-sessions', methods=['POST'])
@@ -50,23 +49,29 @@ These are the implementation steps for the POST /study_sessions route:
 def create_study_session():
 ```
 
-- 2. Request Validation
+- Request Validation
 
-      2.1. Parse JSON request body
-      2.2. Validate required fields
-      2.3. Add type validation for IDs
+      * Parse JSON request body
 
--  3. Database Operations
+      * Validate required fields
 
-     3.1. Verify group exists
-     3.2. Verify study activity exists
-     3.3. Insert new study session
-     3.4. Get the created session ID
+      * Add type validation for IDs
 
-- 4. Response Preparation
+- Database Operations
 
-      4.1. Fetch created session details
-      4.2. Format and return response
+     * Verify group exists
+
+     * Verify study activity exists
+
+     * Insert new study session
+
+     * Get the created session ID
+
+- Response Preparation
+
+     * Fetch created session details
+
+     * Format and return response
 
 ```python
 cursor.execute('''
@@ -84,7 +89,7 @@ cursor.execute('''
 ''', (session_id,))
 ```
 
-- [ ] 4.2. Format and return response
+- Format and return response
 
 ```python
 session = cursor.fetchone()
@@ -100,15 +105,17 @@ return jsonify({
 }), 201
 ```
 
--  5. Error Handling
-    5.1. Add try-catch block
-    5.2. Add database commit
+-  Error Handling
 
-- 6. Testing Code
+     * Add try-catch block
+
+     * Add database commit
+
+- Testing Code
 
 ### Unit Tests
 
-```
+```python
 def test_create_study_session(client):
     # Test successful creation
     response = client.post('/api/study-sessions', json={
@@ -158,29 +165,39 @@ This test file implements these test cases
 
 After creating test file,run this test file using pytest:
 
-'pytest tests/test_study_sessions.py -v'
+```bash
+pytest tests/test_study_sessions.py -v
+```
 
 Next step,initialize the databse:
 
-'python init_db.py'
+```bash
+python init_db.py
+```
 
 and then check the database contents:
 
-'python check_db.py'
+```bash
+python check_db.py 
+```
 
 finally, we make sure the flask is installed
 
-'pip install flask flask-cors'
+```bash
+pip install flask flask-cors
+```
 
 then start the flask server:
 
-'python -m flask run'
+```bash
+python -m flask run
+```
 
 Now,we are ready to run the curl commands
 
 ### Bash/Unix Test Commands 
 
-# Create new study session
+#### Create new study session
 
 '''
    curl -X POST http://localhost:5000/api/study-sessions \
@@ -188,17 +205,17 @@ Now,we are ready to run the curl commands
      -d '{"group_id": 1, "study_activity_id": 1}'
 '''
 
-  ![New study Session.](gen-ai-bootcamp-2025/lang-portal/New-Study-Sessions.png)
+  ![New study Session.](lang-portal/backend-flask/images/New-Study-Sessions.png)
 
-# Test missing fields
+#### Test missing fields
 '''
    curl -X POST http://localhost:5000/api/study-sessions \
       -H "Content-Type: application/json" \
       -d '{"group_id": 1}'
 '''
-   ![Test Missing Field.](gen-ai-bootcamp-2025/lang-portal/backend-flask/images/Test-Missingfields.png)
+   ![Test Missing Field.](lang-portal/backend-flask/images/Test-Missingfields.png)
 
-# Test invalid group
+#### Test invalid group
 
 '''
    curl -X POST http://localhost:5000/api/study-sessions \
@@ -206,7 +223,7 @@ Now,we are ready to run the curl commands
      -d '{"group_id": 999, "study_activity_id": 1}'
 '''
 
-  ![Test Invalid group.](gen-ai-bootcamp-2025/lang-portal/backend-flask/images/Test-Invalid-group.png)
+  ![Test Invalid group.](lang-portal/backend-flask/images/Test-Invalid-group.png)
 
 
 ## 2. Submit reviews for a study sessions (POST /study_sessions/:id/review Route)
@@ -541,7 +558,7 @@ def test_get_group_words_raw_error(client, mocker):
     assert 'error' in data
 ```
 
- ![Test groups.](gen-ai-bootcamp-2025/lang-portal/backend-flask/images/group-test.png)
+ ![Test groups.](lang-portal/backend-flask/images/group-test.png)
 
 ## 6. Documentation
 
