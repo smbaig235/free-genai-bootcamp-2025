@@ -39,7 +39,7 @@ These are the implementation steps for the POST /study_sessions route:
 * Error Handling
 * Testing 
 
-- Route Setup
+#### Route Setup
 
  In this step we added the route decorator and function definition
 
@@ -49,7 +49,7 @@ These are the implementation steps for the POST /study_sessions route:
 def create_study_session():
 ```
 
-- Request Validation
+#### Request Validation
 
       * Parse JSON request body
 
@@ -57,7 +57,7 @@ def create_study_session():
 
       * Add type validation for IDs
 
-- Database Operations
+#### Database Operations
 
      * Verify group exists
 
@@ -67,7 +67,7 @@ def create_study_session():
 
      * Get the created session ID
 
-- Response Preparation
+#### Response Preparation
 
      * Fetch created session details
 
@@ -89,7 +89,7 @@ cursor.execute('''
 ''', (session_id,))
 ```
 
-- Format and return response
+####Format and return response
 
 ```python
 session = cursor.fetchone()
@@ -105,15 +105,15 @@ return jsonify({
 }), 201
 ```
 
--  Error Handling
+####Error Handling
 
      * Add try-catch block
 
      * Add database commit
 
-- Testing Code
+####Testing Code
 
-### Unit Tests
+#### Unit Tests
 
 ```python
 def test_create_study_session(client):
@@ -213,7 +213,7 @@ Now,we are ready to run the curl commands
       -H "Content-Type: application/json" \
       -d '{"group_id": 1}'
 '''
-   ![Test Missing Field.](lang-portal/backend-flask/images/Test-Missingfields.png)
+   ![Test Missing Field.](backend-flask/images/Test-Missingfields.png)
 
 #### Test invalid group
 
@@ -223,7 +223,7 @@ Now,we are ready to run the curl commands
      -d '{"group_id": 999, "study_activity_id": 1}'
 '''
 
-  ![Test Invalid group.](lang-portal/backend-flask/images/Test-Invalid-group.png)
+  ![Test Invalid group.](backend-flask/images/Test-Invalid-group.png)
 
 
 ## 2. Submit reviews for a study sessions (POST /study_sessions/:id/review Route)
@@ -239,7 +239,7 @@ Now,we are ready to run the curl commands
 * Testing 
 
 
-## 1. Route Setup and Request Validation
+#### Route Setup and Request Validation
 
   - Add the route decorator with proper HTTP method and CORS
   - Define the function with session_id parameter
@@ -265,7 +265,7 @@ def create_review_item(id):
             return jsonify({"error": "Invalid data format"}), 400
 ```
 
-## 2. Database Validation
+#### Database Validation
 
 -  Check if study session exists
 -  Verify word exists
@@ -295,7 +295,7 @@ def create_review_item(id):
             return jsonify({"error": "Word not found or not in group"}), 404
 ```
 
-## 3. Database Operations
+#### Database Operations
 
 -  Insert review record into word_review_items table
 -  Update word statistics if needed
@@ -316,7 +316,7 @@ def create_review_item(id):
         app.db.commit()
 ```
 
-## 4. Response Preparation
+#### Response Preparation
 
 -  Fetch created review item details
 -  Format response JSON
@@ -349,7 +349,7 @@ def create_review_item(id):
         }), 201
 ```
 
-## 5. Error Handling
+#### Error Handling
 
 -  Add specific error handling for database errors
 -  Handle potential concurrent modification issues
@@ -363,9 +363,9 @@ def create_review_item(id):
         return jsonify({"error": str(e)}), 500
 ```
 
-## 6. Testing
+#### Testing
 
-### 6.1 Unit Tests
+##### Unit Tests
 
 - Test successful review creation
 - Test invalid session ID case
@@ -373,7 +373,7 @@ def create_review_item(id):
 - Test missing fields case
 - Test invalid data types case
 
-### 6.2 Manual Testing Steps
+#### Manual Testing Steps
 
 1. Test successful review creation with valid data:
    - Create a study session
@@ -427,13 +427,13 @@ These are the implementation steps for GET /groups/:id/words/raw Route
   * Testing
   * Documentation
   
-## 1. Route Setup
+#### Route Setup
 
 -  Add the new route decorator using the existing pattern
 -  Add cross-origin decorator to match other endpoints
 -  Define the function `get_group_words_raw(id)`
 
-## 2. Database Query Implementation
+#### Database Query Implementation
 
 - Set up error handling with try-except block
 - Create database cursor
@@ -443,19 +443,19 @@ These are the implementation steps for GET /groups/:id/words/raw Route
   - No pagination needed (raw endpoint)
   - Include word ID, French word, English word, and review counts
 
-## 3. Response Formatting
+#### Response Formatting
 
 -  Create response dictionary structure
 -  Format each word entry
 -  Return JSON response
 
-## 4. Error Handling
+#### Error Handling
 
 - Add specific error messages for common failures
 - Ensure 500 error returns for unexpected exceptions
 - Add proper error response format matching other endpoints
 
-## Implementation
+#### Implementation
 
  In this implementation we are performing these tasks:
 
@@ -515,14 +515,14 @@ def get_group_words_raw(id):
         return jsonify({"error": str(e)}), 500
 ```
 
-## 5. Testing
+#### Testing
 
 - Write test cases using pytest
 - Test successful response
 - Test group not found scenario
 - Test error handling
 
-### Test Implementation
+#### Test Implementation
 
 ```python
 def test_get_group_words_raw_success(client):
@@ -558,9 +558,9 @@ def test_get_group_words_raw_error(client, mocker):
     assert 'error' in data
 ```
 
- ![Test groups.](lang-portal/backend-flask/images/group-test.png)
+ ![Test groups.](backend-flask/images/group-test.png)
 
-## 6. Documentation
+#### Documentation
 
 -  Add route documentation with request/response examples
 -  Document any specific error cases
