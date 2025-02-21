@@ -74,7 +74,7 @@ Now,we need to set the environment variables created the .env file and set the v
    
  ### Step 4:  
  
-   Test to access the ollama server.
+   Test to access the llama server.
    
    
           curl http://localhost:8008 
@@ -89,13 +89,13 @@ Now,Acces the running container to download the desired LLM model
 
 ### Step 6: 
 
-  downloading the Ollama model:
+  downloading the llama model:
 
           ollama pull llama3.2:1b 
 
 ### Output Results
 
-![pulled model.](images/ollama_Pulled.png)
+![pulled model.](images/llama_Pulled.png)
 
 
 ### Step 7: 
@@ -113,7 +113,7 @@ Check if the model is running inside the container
 
 ### Step 9: 
 
-   As, ollama server is running,Check if ollama rest API is responding.By default ollama server runs on port 11434, but we set the costum port here which is: port 8008.
+   As, llama server is running,Check if llama rest API is responding.By default llama server runs on port 11434, but we set the costum port here which is: port 8008.
 
      
            curl http://localhost:8008/api/generate -d '
