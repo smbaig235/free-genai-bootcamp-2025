@@ -34,16 +34,6 @@ def extract_response(response_text):
 
 # chat:1
 result = gen_comp("what is the capital of France?")
-print("\n\nFull response:")
-print(result)
-
-# chat:2
-result = gen_comp("what object oriented language?")
-print("\n\nFull response:")
-print(result)
-
-# chat:3
-result = gen_comp("what is the color of USA flag?")
-print("\n\nFull response:")
+print("Full JSON response:")
 print(result)
 
