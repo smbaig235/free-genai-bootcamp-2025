@@ -1,5 +1,5 @@
 import requests
-import json  # Make sure this import is present
+import json 
 
 def gen_comp(prompt, model="llama3.2:1b"):
     """
@@ -32,12 +32,12 @@ def extract_response(response_text):
     """
     return response_text
 
-# Example.1
+# chat:1
 result = gen_comp("what is the capital of France?")
 print("\n\nFull response:")
 print(result)
 
-# Example.2
+# chat:2
 result = gen_comp("what object oriented language?")
 print("\n\nFull response:")
 print(result)
