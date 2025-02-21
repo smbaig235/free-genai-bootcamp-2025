@@ -95,7 +95,7 @@ Now,Acces the running container to download the desired LLM model
 
 ### Output Results
 
-![pulled model.](images/llama_Pulled.png)
+![pulled model.](images/ollama_Pulled.png)
 
 
 ### Step 7: 
