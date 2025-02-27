@@ -76,6 +76,7 @@ def main(video_url, print_transcript=False):
     
     # Get transcript
     transcript = downloader.get_transcript(video_url)
+    downloader.save_transcript(transcript, video_url)
     
     if transcript:
         # Save transcript

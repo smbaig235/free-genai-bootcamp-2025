@@ -8,13 +8,14 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from backend.get_transcript import YouTubeTranscriptDownloader
 from backend.chat import BedrockChat
 
 
 # Page config
 st.set_page_config(
-    page_title="Japanese Learning Assistant",
-    page_icon="🎌",
+    page_title="French Learning Assistant",
+   # page_icon="🎌",
     layout="wide"
 )
 
@@ -26,9 +27,9 @@ if 'messages' not in st.session_state:
 
 def render_header():
     """Render the header section"""
-    st.title("🎌 Japanese Learning Assistant")
+    st.title("French Learning Assistant")
     st.markdown("""
-    Transform YouTube transcripts into interactive Japanese learning experiences.
+    Transform YouTube transcripts into interactive french learning experiences.
     
     This tool demonstrates:
     - Base LLM Capabilities
@@ -58,7 +59,7 @@ def render_sidebar():
         stage_info = {
             "1. Chat with Nova": """
             **Current Focus:**
-            - Basic Japanese learning
+            - Basic French learning
             - Understanding LLM capabilities
             - Identifying limitations
             """,
@@ -107,7 +108,7 @@ def render_chat_stage():
 
     # Introduction text
     st.markdown("""
-    Start by exploring Nova's base Japanese language capabilities. Try asking questions about Japanese grammar, 
+    Start by exploring Nova's base French language capabilities. Try asking questions about French grammar, 
     vocabulary, or cultural aspects.
     """)
 
@@ -121,7 +122,7 @@ def render_chat_stage():
             st.markdown(message["content"])
 
     # Chat input area
-    if prompt := st.chat_input("Ask about Japanese language..."):
+    if prompt := st.chat_input("Ask about French language..."):
         # Process the user input
         process_message(prompt)
 
@@ -129,11 +130,8 @@ def render_chat_stage():
     with st.sidebar:
         st.markdown("### Try These Examples")
         example_questions = [
-            "How do I say 'Where is the train station?' in Japanese?",
-            "Explain the difference between は and が",
-            "What's the polite form of 食べる?",
-            "How do I count objects in Japanese?",
-            "What's the difference between こんにちは and こんばんは?",
+            "How do I say 'Where is the train station?' in French?",
+            "What are some common French greetings?",
             "How do I ask for directions politely?"
         ]
         
@@ -166,18 +164,20 @@ def process_message(message: str):
 
 
 def count_characters(text):
-    """Count Japanese and total characters in text"""
+    """Count French and total characters in text"""
     if not text:
         return 0, 0
         
-    def is_japanese(char):
-        return any([
-            '\u4e00' <= char <= '\u9fff',  # Kanji
-            '\u3040' <= char <= '\u309f',  # Hiragana
-            '\u30a0' <= char <= '\u30ff',  # Katakana
-        ])
+   def is_french(char):
+    return any([
+        'a' <= char <= 'z',  # Lowercase letters
+        'A' <= char <= 'Z',  # Uppercase letters
+        'à' <= char <= 'ÿ',  # Lowercase accented letters
+        'À' <= char <= 'Ÿ',  # Uppercase accented letters
+        char in 'çÇ'         # Special French characters
+    ])
     
-    jp_chars = sum(1 for char in text if is_japanese(char))
+    jp_chars = sum(1 for char in text if is_french(char))
     return jp_chars, len(text)
 
 def render_transcript_stage():
@@ -187,7 +187,7 @@ def render_transcript_stage():
     # URL input
     url = st.text_input(
         "YouTube URL",
-        placeholder="Enter a Japanese lesson YouTube URL"
+        placeholder="Enter a French lesson YouTube URL"
     )
     
     # Download button and processing
