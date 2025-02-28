@@ -1,4 +1,6 @@
 chromadb
+hnswlib
 streamlit
 boto3
 youtube_transcript_api
+pysqlite3-binary
